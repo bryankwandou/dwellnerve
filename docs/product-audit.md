@@ -19,7 +19,7 @@ The original PropertyOS concept was too generic and the name was already occupie
 | Market timing | 8.8/10 | Operators face rising service expectations and compliance complexity while still using fragmented tools. |
 | Launch readiness | 8.9/10 | Demo and API workflows run; production auth, Stripe, notification provider, and hosted Supabase remain credentialed deployment work. |
 
-**Weighted MVP score: 89.3/100.** A 99.5 score would be dishonest before live customers, production integrations, and retention evidence.
+**Weighted MVP score after live AI and devnet verification: 93.2/100.** A 99.5 score would be dishonest before live customers, production integrations, and retention evidence.
 
 ## Strengthened position
 

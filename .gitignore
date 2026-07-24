@@ -6,3 +6,8 @@ node_modules
 .vercel
 smoke.pid
 
+.vercel
+*.pid
+
+*.tsbuildinfo
+

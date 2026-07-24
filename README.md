@@ -21,3 +21,8 @@ npm run build
 ```
 
 Production database and RLS groundwork is in `supabase/migrations`.
+## Live deployment
+
+- App: `https://dwellnerve.vercel.app`
+- Repository: `https://github.com/bryankwandou/dwellnerve`
+- Verification evidence: `docs/verification.md`

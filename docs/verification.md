@@ -1,0 +1,31 @@
+# Production Verification — July 24, 2026
+
+## Automated validation
+
+- Domain tests: 4 passed.
+- TypeScript: passed.
+- Focused ESLint across app, components, libraries, and tests: passed.
+- Next.js production build: passed with 15 application/API routes.
+
+## Real AI execution
+
+`POST /api/agent/portfolio-brief` executed against Groq and returned:
+
+- Provider: `groq`
+- Model: `llama-3.3-70b-versatile`
+- Headline: `Urgent Safety Issue at Rental Property`
+- Priorities returned: `3`
+
+The deterministic emergency classifier remains authoritative for safety escalation even if the model provider is unavailable.
+
+## Real Solana devnet execution
+
+`POST /api/solana/proof` created and confirmed a Memo Program transaction on Solana devnet.
+
+- Verified: `true`
+- Signer: `35z7X59rtyts557Up1RAwpyYN7x2cFqcDc7RjPuNxFzr`
+- Signature: `3nB8wEyehZEXuo2LyMuN9ThtuWkDNeJwx9MjTjaMAF71nWPdGw1ZiDk7i5R5Vtg5fDrtLWux3xGL9uSs4NjwW6iT`
+- Balance after proof: `22.667484861 SOL`
+- Observed devnet slot: `478478335`
+
+The UI exposes two proof paths: a server-signed public operational attestation and a browser-wallet memo signed by the connected user.
