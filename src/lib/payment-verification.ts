@@ -1,0 +1,2 @@
+export interface TransferEvidence { program: string; type: string; destination?: string; lamports?: number }
+export function isQualifyingDevnetPayment(evidence: TransferEvidence, recipient: string, minimumLamports: number) { return evidence.program === "system" && evidence.type === "transfer" && evidence.destination === recipient && Number(evidence.lamports || 0) >= minimumLamports; }

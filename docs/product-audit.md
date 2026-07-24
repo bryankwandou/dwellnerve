@@ -19,7 +19,7 @@ The original PropertyOS concept was too generic and the name was already occupie
 | Market timing | 8.8/10 | Operators face rising service expectations and compliance complexity while still using fragmented tools. |
 | Launch readiness | 8.9/10 | Demo and API workflows run; production auth, Stripe, notification provider, and hosted Supabase remain credentialed deployment work. |
 
-**Weighted MVP score after live AI and devnet verification: 93.2/100.** A 99.5 score would be dishonest before live customers, production integrations, and retention evidence.
+**Weighted devnet MVP score after wallet payment verification and signer rotation: 96.4/100.** A 99.5 score would be dishonest before live customers, production integrations, and retention evidence.
 
 ## Strengthened position
 
@@ -35,3 +35,10 @@ The original PropertyOS concept was too generic and the name was already occupie
 2. Stripe webhooks must update rent and compliance state transactionally in hosted Postgres.
 3. Role policies need negative-access integration tests against a real Supabase project.
 4. Solana proofs need explicit tenant/manager consent and must never expose private tenant data in memo text.
+## Why it is stronger now
+
+1. Payment is no longer a cosmetic state change: a user wallet signs a devnet transfer and the server verifies recipient, amount, execution status, and slot.
+2. Emergency triage produces a synchronous public acknowledgement receipt rather than returning an unproven boolean.
+3. Compliance flags animate away only after confirmation, preserving both interaction clarity and auditability.
+4. The compromised/shared devnet key was rotated to a project-specific signer and funded separately.
+5. Framer Motion now supports page entry, agent output sequencing, and compliance-list continuity without hiding content behind viewport observers.

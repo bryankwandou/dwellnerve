@@ -39,3 +39,11 @@ The production deployment at `https://dwellnerve.vercel.app` was verified on Jul
 - Devnet signer health: `true`
 - Production signature: `TmWiaa4yNXFunw422iYbenWVipgNmjNtv35wFGQ9REx2ojzxr4QofymwnDHGcYjeNzfnsKFG5NbCWFjNg11HXYE`
 - Devnet slot observed: `478481079`
+## Devnet wallet-payment iteration
+
+- Rotated signer: `BmUmpwcDXaxF1cSBKUowwpie1uTTYXVRptwjGdjQdj8L`
+- Funding transaction: `4AMM3DMy1SD65MNES7ELwQD4awAaj32MFy9ikcfZ6K3QLJfxfK88whkxcecNdwffsawrVPBqAQqTvPPAFFb9d53f`
+- Emergency acknowledgement: `2UYZzSPVLSJzbcYVuzbPm2R8WvQiYb6QdxQEMkj5fvpAgvm79pLXWofYb56TyqrZRazEBuManTJ9C44ed9JG4Bf2`
+- Verified devnet payment: `61pNZNNAiJXd5u8RirUXm5Hm4WxGKgJNK2ig9eMeZTTYtte12xczUSWkbdgStF88NnEYckr5y9KYPRQPcfRS9XEA`
+- Payment slot: `478490508`
+- Negative verification: memo-only evidence rejected.

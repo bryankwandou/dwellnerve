@@ -1,3 +1,17 @@
-import {NextResponse} from "next/server"; import Groq from "groq-sdk"; import {z} from "zod"; import {triageMaintenance} from "@/lib/domain";
-const schema=z.object({unit_id:z.string().min(1),raw_description:z.string().min(8),photo_paths:z.array(z.string()).default([])});
-export async function POST(request:Request){const parsed=schema.safeParse(await request.json());if(!parsed.success)return NextResponse.json({error:"A unit and useful description are required."},{status:400});let result=triageMaintenance(parsed.data.raw_description);if(process.env.GROQ_API_KEY){try{const groq=new Groq({apiKey:process.env.GROQ_API_KEY});const response=await groq.chat.completions.create({model:"llama-3.3-70b-versatile",temperature:0,response_format:{type:"json_object"},messages:[{role:"system",content:"Return JSON urgency low|medium|high|emergency, trade plumbing|electrical|hvac|appliance|general|safety, reason. Gas, fire, carbon monoxide, active flooding, break-in, sparking, or dangerous no heat is emergency."},{role:"user",content:parsed.data.raw_description}]});const ai=JSON.parse(response.choices[0]?.message?.content||"{}");result={...result,urgency:ai.urgency||result.urgency,trade:ai.trade||result.trade,reason:ai.reason||result.reason,requiresImmediateNotification:ai.urgency==="emergency"||result.requiresImmediateNotification}}catch{}}return NextResponse.json({id:crypto.randomUUID(),...result,notified:result.requiresImmediateNotification,status:"submitted"})}
+import { NextResponse } from "next/server";
+import Groq from "groq-sdk";
+import { z } from "zod";
+import { triageMaintenance } from "@/lib/domain";
+import { sendDevnetProof } from "@/lib/solana-server";
+const schema = z.object({ unit_id: z.string().min(1), raw_description: z.string().min(8), photo_paths: z.array(z.string()).default([]) });
+export async function POST(request: Request) {
+  const parsed = schema.safeParse(await request.json());
+  if (!parsed.success) return NextResponse.json({ error: "A unit and useful description are required." }, { status: 400 });
+  let result = triageMaintenance(parsed.data.raw_description);
+  if (process.env.GROQ_API_KEY) {
+    try { const groq = new Groq({ apiKey: process.env.GROQ_API_KEY }); const response = await groq.chat.completions.create({ model: "llama-3.3-70b-versatile", temperature: 0, response_format: { type: "json_object" }, messages: [{ role: "system", content: "Return JSON urgency low|medium|high|emergency, trade plumbing|electrical|hvac|appliance|general|safety, reason. Gas, fire, carbon monoxide, active flooding, break-in, sparking, or dangerous no heat is emergency." }, { role: "user", content: parsed.data.raw_description }] }); const ai = JSON.parse(response.choices[0]?.message?.content || "{}"); result = { ...result, urgency: ai.urgency || result.urgency, trade: ai.trade || result.trade, reason: ai.reason || result.reason, requiresImmediateNotification: ai.urgency === "emergency" || result.requiresImmediateNotification }; } catch { }
+  }
+  let notificationProof = null;
+  if (result.requiresImmediateNotification) { try { notificationProof = await sendDevnetProof("emergency-maintenance-ack"); } catch { } }
+  return NextResponse.json({ id: crypto.randomUUID(), ...result, notified: result.requiresImmediateNotification && Boolean(notificationProof), notificationProof, status: "submitted" });
+}
