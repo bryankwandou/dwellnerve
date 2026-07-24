@@ -1,0 +1,1 @@
+export function BrandMark(){return <span className="brand"><span className="brandIcon"><i/><i/><i/></span><strong>DwellNerve</strong></span>}

@@ -1,0 +1,2 @@
+import {AppShell} from "@/components/app-shell"; import {MaintenanceForm} from "@/components/maintenance-form";
+export default function Page(){return <AppShell eyebrow="Tenant repair intake" title="Tell us what is happening" description="Safety signals alert the response team immediately."><MaintenanceForm/></AppShell>}

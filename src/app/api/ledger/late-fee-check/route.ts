@@ -1,0 +1,2 @@
+import {NextResponse} from "next/server"; import {calculateLateFee} from "@/lib/domain";
+export async function GET(request:Request){const daysLate=Number(new URL(request.url).searchParams.get("days_late")||11);const terms={monthlyRent:2100,dueDay:1,gracePeriodDays:5,lateFeeType:"flat" as const,lateFeeValue:85,jurisdictionCap:100};return NextResponse.json({late_fee_amount:calculateLateFee(terms,daysLate),grace_period_days:terms.gracePeriodDays,computed_as_of:"2026-07-24",source:"stored_lease_terms"})}

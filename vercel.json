@@ -1,0 +1,1 @@
+{"crons":[{"path":"/api/compliance/scan","schedule":"0 6 * * *"}]}

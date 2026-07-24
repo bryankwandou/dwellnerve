@@ -1,0 +1,2 @@
+import {Connection} from "@solana/web3.js"; import {NextResponse} from "next/server";
+export async function GET(){try{const connection=new Connection(process.env.NEXT_PUBLIC_SOLANA_RPC_URL||"https://api.devnet.solana.com","confirmed");const [version,slot]=await Promise.all([connection.getVersion(),connection.getSlot()]);return NextResponse.json({network:"devnet",healthy:true,slot,version:version["solana-core"]})}catch(error){return NextResponse.json({network:"devnet",healthy:false,error:error instanceof Error?error.message:"RPC unavailable"},{status:503})}}

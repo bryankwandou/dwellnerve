@@ -1,0 +1,3 @@
+import {NextResponse} from "next/server"; import {scanCompliance} from "@/lib/domain";
+const leases=[{id:"lease-linden",tenant:"Theo Grant",balance:2185,daysPastGrace:11,insuranceExpiresOn:"2027-02-01",leaseEndsOn:"2027-05-31"},{id:"lease-briar",tenant:"Maya Ortiz",balance:0,daysPastGrace:0,insuranceExpiresOn:"2026-07-18",leaseEndsOn:"2027-05-31"},{id:"lease-atlas",tenant:"Caleb Woods",balance:0,daysPastGrace:0,insuranceExpiresOn:"2027-01-01",leaseEndsOn:"2026-09-09"}];
+export async function POST(){const once=scanCompliance(leases,[],new Date("2026-07-24T12:00:00Z"));const twice=scanCompliance(leases,once,new Date("2026-07-24T12:00:00Z"));return NextResponse.json({flags:twice,idempotent:once.length===twice.length,scanned_at:new Date().toISOString()})}
