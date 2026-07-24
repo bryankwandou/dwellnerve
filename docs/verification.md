@@ -29,3 +29,13 @@ The deterministic emergency classifier remains authoritative for safety escalati
 - Observed devnet slot: `478478335`
 
 The UI exposes two proof paths: a server-signed public operational attestation and a browser-wallet memo signed by the connected user.
+## Vercel production verification
+
+The production deployment at `https://dwellnerve.vercel.app` was verified on July 24, 2026:
+
+- Dashboard HTTP status: `200`
+- Groq provider/model: `groq` / `llama-3.3-70b-versatile`
+- Agent priorities returned: `3`
+- Devnet signer health: `true`
+- Production signature: `TmWiaa4yNXFunw422iYbenWVipgNmjNtv35wFGQ9REx2ojzxr4QofymwnDHGcYjeNzfnsKFG5NbCWFjNg11HXYE`
+- Devnet slot observed: `478481079`
