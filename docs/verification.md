@@ -47,3 +47,12 @@ The production deployment at `https://dwellnerve.vercel.app` was verified on Jul
 - Verified devnet payment: `61pNZNNAiJXd5u8RirUXm5Hm4WxGKgJNK2ig9eMeZTTYtte12xczUSWkbdgStF88NnEYckr5y9KYPRQPcfRS9XEA`
 - Payment slot: `478490508`
 - Negative verification: memo-only evidence rejected.
+## Final production acceptance — July 24, 2026
+
+- Payment page: HTTP `200`, wallet CTA rendered.
+- Groq agent: `3` priorities returned.
+- Production emergency acknowledgement: `5LNDc8hjiyHdZMU24kAxQTx5eMNSL6q6QYFRpFtHhjZcP2GxmRKFY3xsKWArFx93xvTJt3MLkwb3N6Y5cRryFQEG`.
+- Rotated signer health: `true`, balance observed `0.10094 SOL`.
+- Production wallet-payment verification signature: `4AmvKaX4kJJpYHHk9DqQ9SJtsfKLNEQXNWqKeFLvH6dBSsYdYv5uFgN2AvhLMofXkhCZyrar72ZmhnP3sZ7SWBHn`.
+- Payment verification slot: `478493772`.
+- Memo-only emergency proof submitted to the payment verifier: rejected with non-success status.
